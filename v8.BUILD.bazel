@@ -69,7 +69,7 @@ cc_library(
   name = "core_lib",
   visibility = ["//visibility:public"],
   copts = COPTS + COPTS_TARGET_ARCH,
-  includes = ["include"],
+  includes = ["."],
   srcs = [
     ":torque_generated_initializers_files",
     ":v8_base_files",
@@ -79,6 +79,7 @@ cc_library(
     ":v8_libplatform_files",
     ":v8_libsampler_files",
     ":v8_nosnapshot_files",
+    ":v8_version_files",
     # TODO(ofrobots): more.
   ]
 )
@@ -95,6 +96,7 @@ py_binary(
 cc_binary(
     name = "torque",
     srcs = [
+        ":v8_base_files",
         "src/torque/ast.h",
         "src/torque/cfg.cc",
         "src/torque/cfg.h",
